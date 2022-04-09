@@ -3,13 +3,12 @@ import {
   Controller,
   Delete,
   Get,
-  NotFoundException,
   Param,
   Patch,
   Post,
 } from '@nestjs/common';
-import { BaseExceptionFilter } from '@nestjs/core';
 import { CreateMovieDto } from './dto/createMovie.dto';
+import { UpdateMovieDto } from './dto/updateMovie.dto';
 import { Movie } from './entities/movie.entity';
 import { MoviesService } from './movies.service';
 
@@ -28,7 +27,9 @@ export class MoviesController {
   //   }
   // create generator
   @Get('/:id')
-  getOne(@Param('id') movieId: string): Movie {
+  getOne(@Param('id') movieId: number): Movie {
+    console.log(typeof movieId);
+
     return this.movieService.getOne(movieId);
   }
 
@@ -38,14 +39,14 @@ export class MoviesController {
   }
 
   @Delete('/:id')
-  remove(@Param('id') movieId: string) {
+  remove(@Param('id') movieId: number) {
     return this.movieService.deleteOne(movieId);
   }
 
   // 리소스의 일부분만 업데이트함
   // expressd에서는 리턴을 JSON으로 하려면 설정해야 했지만 nest에서는 자동으로 해준다.
   @Patch('/:id')
-  patch(@Param('id') movieid: string, @Body() updateData: CreateMovieDto) {
+  patch(@Param('id') movieid: number, @Body() updateData: UpdateMovieDto) {
     return this.movieService.update(movieid, updateData);
   }
 }
