@@ -8,33 +8,36 @@ import {
   Post,
   Query,
 } from '@nestjs/common';
+import { Movie } from './entities/movie.entity';
+import { MoviesService } from './movies.service';
 
 @Controller('movies')
 export class MoviesController {
+  constructor(private readonly movieService: MoviesService) {}
+
   @Get()
-  getALL() {
-    return 'this will return all movies';
+  getALL(): Movie[] {
+    return this.movieService.getAll();
   }
   // react router랑 똑같이 위에있는 함수가 우선순위를 갖는다.
-  @Get('search')
-  search(@Query('year') searchingYear: string) {
-    return `we are searching for a mive with a title after : ${searchingYear}`;
-  }
+  //   @Get('search')
+  //   search(@Query('year') searchingYear: string) {
+  //     return `we are searching for a mive with a title after : ${searchingYear}`;
+  //   }
   // create generator
   @Get('/:id')
-  getOne(@Param('id') movieId: string) {
-    return `This will return one movie with the id : ${movieId}`;
+  getOne(@Param('id') movieId: string): Movie {
+    return this.movieService.getOne(movieId);
   }
- 
+
   @Post()
   create(@Body() movieData) {
-    console.log(movieData);
-    return movieData;
+    return this.movieService.create(movieData);
   }
 
   @Delete('/:id')
   remove(@Param('id') movieId: string) {
-    return `This will delete a movie with the id : ${movieId}`;
+    return this.movieService.deleteOne(movieId);
   }
 
   // 리소스의 일부분만 업데이트함
