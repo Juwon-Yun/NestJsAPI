@@ -3,11 +3,12 @@ import {
   Controller,
   Delete,
   Get,
+  NotFoundException,
   Param,
   Patch,
   Post,
-  Query,
 } from '@nestjs/common';
+import { BaseExceptionFilter } from '@nestjs/core';
 import { Movie } from './entities/movie.entity';
 import { MoviesService } from './movies.service';
 
@@ -44,9 +45,6 @@ export class MoviesController {
   // expressd에서는 리턴을 JSON으로 하려면 설정해야 했지만 nest에서는 자동으로 해준다.
   @Patch('/:id')
   patch(@Param('id') movieid: string, @Body() updateData) {
-    return {
-      updatedMovie: movieid,
-      ...updateData,
-    };
+    return this.movieService.update(movieid, updateData);
   }
 }

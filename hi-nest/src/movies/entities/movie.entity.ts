@@ -1,3 +1,4 @@
+// fake entity structure
 export class Movie {
   id: number;
   title: string;
