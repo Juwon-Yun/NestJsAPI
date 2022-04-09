@@ -46,4 +46,5 @@
     npm run start:dev
     nest
     nest g co
+    npm i class-validator class-transformer
 ```

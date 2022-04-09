@@ -1,4 +1,5 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
+import { CreateMovieDto } from './dto/createMovie.dto';
 import { Movie } from './entities/movie.entity';
 
 @Injectable()
@@ -20,7 +21,7 @@ export class MoviesService {
     this.movies = this.movies.filter((movie) => movie.id !== +id);
   }
 
-  create(movieData) {
+  create(movieData: CreateMovieDto) {
     this.movies.push({
       id: this.movies.length + 1,
       ...movieData,
@@ -28,7 +29,7 @@ export class MoviesService {
   }
 
   // updateData의 유효성 검사를 하지 않았다.
-  update(id: string, updateData) {
+  update(id: string, updateData: CreateMovieDto) {
     const movie = this.getOne(id);
     this.deleteOne(id);
     // 로직때문에 해킹방법으로 함

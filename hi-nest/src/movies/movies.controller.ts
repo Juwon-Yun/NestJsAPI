@@ -9,6 +9,7 @@ import {
   Post,
 } from '@nestjs/common';
 import { BaseExceptionFilter } from '@nestjs/core';
+import { CreateMovieDto } from './dto/createMovie.dto';
 import { Movie } from './entities/movie.entity';
 import { MoviesService } from './movies.service';
 
@@ -32,7 +33,7 @@ export class MoviesController {
   }
 
   @Post()
-  create(@Body() movieData) {
+  create(@Body() movieData: CreateMovieDto) {
     return this.movieService.create(movieData);
   }
 
@@ -44,7 +45,7 @@ export class MoviesController {
   // 리소스의 일부분만 업데이트함
   // expressd에서는 리턴을 JSON으로 하려면 설정해야 했지만 nest에서는 자동으로 해준다.
   @Patch('/:id')
-  patch(@Param('id') movieid: string, @Body() updateData) {
+  patch(@Param('id') movieid: string, @Body() updateData: CreateMovieDto) {
     return this.movieService.update(movieid, updateData);
   }
 }
