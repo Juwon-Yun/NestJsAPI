@@ -37,5 +37,6 @@
 
 ```js
     npm i -g @nestjs/cli
-    nest new
+    nest new projectName
+    npm run start:dev
 ```
