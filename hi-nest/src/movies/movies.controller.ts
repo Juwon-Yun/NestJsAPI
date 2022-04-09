@@ -14,7 +14,15 @@ import { MoviesService } from './movies.service';
 
 @Controller('movies')
 export class MoviesController {
+  //의존성 주입하는 부분, typescript의 장점이 또 하나 생겼다.
   constructor(private readonly movieService: MoviesService) {}
+
+  // nest.js는 node.js 위에서 돌아가기 때문에 express의 기능도 사용할 수 있다.
+  // getAll(@Req req, @Res, res) : Movie[] { }
+  // Nest.js는 express와 Fastify 두개의 프레임워크 위에서 작동한다.
+  // 그렇기에 nest.js는 Fastify 프레임워크로 전환해 사용할 수 있다.
+  // Fastify는 express보다 2배는 빠르다.
+  // 성능 향상을 위해서는 nest.js기반의 Fastify를 추천함.
 
   @Get()
   getALL(): Movie[] {
