@@ -1,10 +1,14 @@
 #### this repo is running for NestJs
+```js
+    Learn how to test API code
+    NestJs = Typescript Version NodeJs
+```
 
 ##### Need skill
 
 ```js
-Typescript;
-NodeJs;
+    Typescript
+    NodeJs
 ```
 
 ##### Learn Theory
@@ -27,4 +31,11 @@ NodeJs;
     NestJs
     Jest
     OOP
+```
+
+##### Command Line
+
+```js
+    npm i -g @nestjs/cli
+    nest new
 ```
