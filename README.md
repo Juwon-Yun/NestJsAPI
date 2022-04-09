@@ -36,6 +36,7 @@
 ##### Command Line
 
 ```js
+    Insomnia
     npm i -g @nestjs/cli
     nest new projectName
     npm run start:dev
