@@ -39,4 +39,6 @@
     npm i -g @nestjs/cli
     nest new projectName
     npm run start:dev
+    nest
+    nest g co
 ```
