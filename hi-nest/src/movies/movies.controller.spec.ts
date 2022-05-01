@@ -1,7 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { MoviesService } from './movies.service';
 
-describe('MoviesService', () => {
+describe('getAllpotato', () => {
   let service: MoviesService;
 
   beforeEach(async () => {

@@ -48,4 +48,15 @@
     nest g co
     npm i class-validator class-transformer
     npm i @nestjs/mapped-types
+
+```
+
+##### Unit Test
+
+```js
+    command line for unit test 
+    
+    npm run test:cov
+    npm run test:watch
+    
 ```
